@@ -97,7 +97,7 @@ exports.sendEmail = async (req, resp) => {
         const saveToken=await User.updateOne({username:username},{$set:{token:token}});
         const { data, error } = await resend.emails.send({
             from: 'onboarding@resend.dev',
-            to: `kmonu1666@gmail.com`,
+            to: `${email}`, 
             subject: `Hello ${username}`,
             html: `<p><strong>Thankyou !<b>Please verify your account by clicking the below link:</strong><br>http://localhost:3000/verify?username=${username}&token=${token}</p>`
           });
