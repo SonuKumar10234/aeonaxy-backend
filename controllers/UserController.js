@@ -99,7 +99,7 @@ exports.sendEmail = async (req, resp) => {
             from: 'onboarding@resend.dev',
             to: `${email}`, 
             subject: `Hello ${username}`,
-            html: `<p><strong>Thankyou !<b>Please verify your account by clicking the below link:</strong><br>http://localhost:3000/verify?username=${username}&token=${token}</p>`
+            html: `<p><strong>Thankyou !<b>Please verify your account by clicking the below link:</strong><br>${process.env.BASE_URL}/verify?username=${username}&token=${token}</p>`
           });
           
 
