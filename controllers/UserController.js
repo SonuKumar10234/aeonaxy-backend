@@ -123,24 +123,3 @@ exports.verifyAccount = async(req,resp)=>{
         resp.json({message:"Bad request",status:500});
     }
 }
-
-exports.loginUser = async (req, resp) => {
-
-    try {
-        const user = await User.findOne({ email: req.body.email });
-        if (!user) {
-            resp.status(401).json({ message: 'user not found in our database' });
-        }
-        else if (user.password === req.body.password) {
-            // resp.status(200).json({id: user.id, email: user.email, name: user.name, addresses: user.addresses});
-            resp.status(200).json({ id: user.id, email: user.email, name: user.name, role: user.role });
-        }
-        else {
-            resp.status(401).json({ message: 'invalid credential' });
-        }
-
-    } catch (err) {
-        resp.status(400).json(err);
-    }
-
-}
